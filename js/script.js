@@ -1,10 +1,10 @@
 console .log('welcome to spotify');
 let songs=[
-    {songName:'Enna Sona - OK Jaanu', filepath:'./songs/mp1.mp3'},
-    {songName:'Ban Ja Rani - Tumhari Sulu', filepath:'./songs/mp2.mp3'},
-    {songName:'Nazm Nazm - Bareilly Ki Barfi', filepath:'./songs/mp3.mp3'},
-    {songName:'Lambiyaan Si Judaiyan - Raabta', filepath:'./songs/mp4.mp3'},
-    {songName:'Aaj Din Chadheya - Love Aaj Kal', filepath:'./songs/mp5.mp3'}
+    {songName:'Muskurane - City Light', filepath:'./songs/mp1.mp3'},
+    {songName:'Kaun tuje - Ms Dhoni', filepath:'./songs/mp2.mp3'},
+    {songName:'Zaalima - Raees', filepath:'./songs/mp3.mp3'},
+    {songName:'chori kiya - Dabang', filepath:'./songs/mp4.mp3'},
+    {songName:'soorli ankhoiyo - Veer', filepath:'./songs/mp5.mp3'}
 ]
 
 // initialize the variable
@@ -21,7 +21,7 @@ let audio;
 
 songs.forEach((val,index)=>{
     songList.insertAdjacentHTML(
-        'afterbegin',
+        'beforeend',
         `
         <div class="list">
         <span>${val.songName}</span>
@@ -43,6 +43,7 @@ const playMusic=()=>{
         progress=parseInt((audio.currentTime/audio.duration)*100);
         progressBar.value=progress;
     });
+    main.classList.add('music_start');
 
 }
 
@@ -50,7 +51,9 @@ const pauseMusic=(indexNumber)=>{
     isPlaying=true;
     masterPlay.classList.replace('fa-pause-circle','fa-play-circle')
     audio.pause();
+    main.classList.remove('music_start');
 }
+  
 
 masterPlay.addEventListener("click",()=>{
     isPlaying?playMusic(i):pauseMusic();

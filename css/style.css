@@ -104,9 +104,12 @@ main .track .songList {
 
 main .track .songList .list {
   background-color: #78458f;
-  padding: 10px;
+  padding: 5px 10px;
   margin: 1px 0px;
   border-radius: 26px;
+  margin-bottom: 7px;
+  font-size: 15px;
+  color: antiquewhite;
 }
 
 footer {
