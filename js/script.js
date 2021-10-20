@@ -1,45 +1,109 @@
 console .log('welcome to spotify');
+let songs=[
+    {songName:'Enna Sona - OK Jaanu', filepath:'./songs/mp1.mp3'},
+    {songName:'Ban Ja Rani - Tumhari Sulu', filepath:'./songs/mp2.mp3'},
+    {songName:'Nazm Nazm - Bareilly Ki Barfi', filepath:'./songs/mp3.mp3'},
+    {songName:'Lambiyaan Si Judaiyan - Raabta', filepath:'./songs/mp4.mp3'},
+    {songName:'Aaj Din Chadheya - Love Aaj Kal', filepath:'./songs/mp5.mp3'}
+]
+
 // initialize the variable
-let songIndex = 0;
-let audioElement = new Audio('./songs/mp3.mp3');
 let masterPlay = document.getElementById("masterPlay");
 let progressBar = document.getElementById("progressBar"); 
 let main = document.querySelector("Main");
+let songList = document.querySelector('.songList');
+let forward = document.getElementById('forward');
+let backward = document.getElementById('backward');
 
-let songs=[
-    {songName:'song1', filepath:'./songs/mp1.mp3', coverPath:'./images/mp1.jpg'},
-    {songName:'song2', filepath:'./songs/mp2.mp3', coverPath:'./images/mp2.jpg'},
-    {songName:'song3', filepath:'./songs/mp3.mp3', coverPath:'./images/mp1.jpg'},
-    {songName:'song4', filepath:'./songs/mp4.mp3', coverPath:'./images/mp2.jpg'},
-    {songName:'song5', filepath:'./songs/mp5.mp3', coverPath:'./images/mp1.jpg'}
-]
+let isPlaying=true;
+let i=0;
+let audio;
 
-masterPlay.addEventListener('click',()=>{
-    if(audioElement.paused || audioElement.currentTime<=0){
-        audioElement.play();
-        masterPlay.classList.remove('fa-play-circle');
-        masterPlay.classList.add('fa-pause-circle');
-        main.classList.add('music_start');
-    }
-    else{
-        audioElement.pause();
-        masterPlay.classList.add('fa-play-circle');
-        masterPlay.classList.remove('fa-pause-circle');
-        main.classList.remove('music_start');
-    }
+songs.forEach((val,index)=>{
+    songList.insertAdjacentHTML(
+        'afterbegin',
+        `
+        <div class="list">
+        <span>${val.songName}</span>
+        <span class="songlistplay">
+        <span class="timestamp">05:34</span>
+        <i class="fas fa-play-circle"></i>
+        </span>
+    </div>`
+    );
 })
 
-audioElement.addEventListener('timeupdate',()=>{
-    console.log(`timeupdate:${audioElement.ontimeupdate}`);
-    console.log(`time ${audioElement.currentTime}`);
-    console.log(`duration ${audioElement.duration}`);
+const playMusic=()=>{
+    isPlaying=false;
+    masterPlay.classList.replace('fa-play-circle','fa-pause-circle')
+    audio=new Audio(songs[i].filepath);
+    audio.play();
+    highlight(i);
+    audio.addEventListener('timeupdate',()=>{
+        progress=parseInt((audio.currentTime/audio.duration)*100);
+        progressBar.value=progress;
+    });
 
-    progress=parseInt((audioElement.currentTime/audioElement.duration)*100);
-    progressBar.value=progress;
-    console.log(progressBar);
+}
 
-});
+const pauseMusic=(indexNumber)=>{
+    isPlaying=true;
+    masterPlay.classList.replace('fa-pause-circle','fa-play-circle')
+    audio.pause();
+}
+
+masterPlay.addEventListener("click",()=>{
+    isPlaying?playMusic(i):pauseMusic();
+}); 
+
+
+const nextSong=()=>{
+    i=(i+1)%songs.length;
+    pauseMusic();
+    playMusic(i);
+    highlight(i);
+}
+  
+const prevSong=()=>{
+    i=(i - 1 + songs.length)%songs.length;
+    pauseMusic();
+    playMusic(i);
+    highlight(i);
+}
+
+const highlight=(i)=>{
+    let songitem = document.querySelectorAll('.songList .list');
+    let getSiblings=(e)=>{
+        let siblings = []; 
+        // if no parent, return no sibling
+        if(!e.parentNode) {
+            return siblings;
+        }
+     // first child of the parent node
+        let sibling  = e.parentNode.firstChild;
+        while (sibling) {
+            if (sibling.nodeType === 1 && sibling !== e) {
+                siblings.push(sibling);
+            }
+            sibling = sibling.nextSibling;
+        }
+        return siblings;
+        
+    }
+
+    songitem[i].classList.add('highlight');
+    let siblings = getSiblings(songitem[i]);
+    siblingText = siblings.map(e => e);
+    siblingText.forEach((value,index)=>{
+        value.classList.remove('highlight');
+    })
+
+}
 
 progressBar.addEventListener('change',()=>{
-    audioElement.currentTime=progressBar.value*audioElement.duration/100;
-})
+    audio.currentTime=progressBar.value*audio.duration/100;
+});
+
+
+forward.addEventListener("click",nextSong); 
+backward.addEventListener("click",prevSong);

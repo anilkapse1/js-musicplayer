@@ -110,7 +110,14 @@ footer{
     }
 }
 
+#masterPlay:hover,#forward:hover,#backward:hover{
+    cursor: pointer;
+}
 
+.highlight{
+    background-color: #a7243f !important;
+    color: aliceblue;
+}
 
 // animation start
 

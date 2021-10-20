@@ -137,6 +137,15 @@ footer input {
   width: 100%;
 }
 
+#masterPlay:hover, #forward:hover, #backward:hover {
+  cursor: pointer;
+}
+
+.highlight {
+  background-color: #a7243f !important;
+  color: aliceblue;
+}
+
 @-webkit-keyframes dj {
   0% {
     background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(157, 14, 14, 0)), to(#581845)), url(https://cdn.pixabay.com/photo/2015/05/15/14/50/concert-768722_960_720.jpg);
