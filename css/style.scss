@@ -53,16 +53,20 @@ header{
     
 }
 
+
+.music_start{
+    animation-name:dj;
+    animation-duration:3s;
+    animation-timing-function: cubic-bezier(.75,.75,.28,.3);
+    animation-iteration-count: infinite;
+}
+
 main{
     height: 100vh;
     background-image: linear-gradient(to bottom, rgba(157, 14, 14, 0), #4f0707),url(https://cdn.pixabay.com/photo/2015/05/15/14/50/concert-768722_960_720.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    animation-name:dj;
-    animation-duration:3s;
-    animation-timing-function: cubic-bezier(.75,.75,.28,.3);
-    animation-iteration-count: infinite;
 
     .track{
         background-color: rgba(33,33,42,.3);
