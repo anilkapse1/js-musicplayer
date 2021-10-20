@@ -27,30 +27,36 @@ body{
 // main code start
 header{
     background-color: black;
-    nav{
-        ul{
-            list-style-type: none;
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-start;
-            flex-wrap: wrap;
+    padding: 10px 0px;
+    .container{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        h4{
             margin: 0px;
-            align-items: center;
-            padding: 0px;
-            li{
-                color:#fff;
-                padding-right: 5px;
-                text-transform: uppercase;
-                img{
-                }
-                &:nth-child(1){
-                    width: 5%;
-                    margin-right: auto;
-                }
+            color: #7093b3;
+        }
+    }
+    span{
+        width: 50px;
+        height: 50px;
+        display: inline-block;
+        border-radius: 50%;
+        background-color: #78458f;
+        text-align: center;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        a{
+            text-decoration: none;
+            color: white;
+            transition: .2s;
+            &:hover{
+                color:white;
+                transform: scale(.9);
             }
         }
     }
-    
 }
 
 
@@ -110,7 +116,11 @@ footer{
 
     input{
         width: 100%;
+        &:hover{
+            cursor: pointer;
+        }
     }
+
 }
 
 #masterPlay:hover,#forward:hover,#backward:hover{
@@ -124,6 +134,11 @@ footer{
 
 // animation start
 
+@media only screen and (max-width: 768px) {
+    footer {
+      height: 20vh;
+    }
+  }
 @keyframes dj {
     0% {
         background-image: linear-gradient(to bottom, rgba(157, 14, 14, 0), #581845),url(https://cdn.pixabay.com/photo/2015/05/15/14/50/concert-768722_960_720.jpg);
@@ -141,3 +156,4 @@ footer{
         background-image: linear-gradient(to bottom, rgba(157, 14, 14, 0), #FFC300),url(https://cdn.pixabay.com/photo/2015/05/15/14/50/concert-768722_960_720.jpg);
     }
   }
+

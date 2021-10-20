@@ -28,38 +28,55 @@ body {
 
 header {
   background-color: black;
+  padding: 10px 0px;
 }
 
-header nav ul {
-  list-style-type: none;
+header .container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  margin: 0px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 0px;
 }
 
-header nav ul li {
-  color: #fff;
-  padding-right: 5px;
-  text-transform: uppercase;
+header .container h4 {
+  margin: 0px;
+  color: #7093b3;
 }
 
-header nav ul li:nth-child(1) {
-  width: 5%;
-  margin-right: auto;
+header span {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  border-radius: 50%;
+  background-color: #78458f;
+  text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+header span a {
+  text-decoration: none;
+  color: white;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+header span a:hover {
+  color: white;
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
 }
 
 .music_start {
@@ -140,6 +157,10 @@ footer input {
   width: 100%;
 }
 
+footer input:hover {
+  cursor: pointer;
+}
+
 #masterPlay:hover, #forward:hover, #backward:hover {
   cursor: pointer;
 }
@@ -147,6 +168,12 @@ footer input {
 .highlight {
   background-color: #a7243f !important;
   color: aliceblue;
+}
+
+@media only screen and (max-width: 768px) {
+  footer {
+    height: 20vh;
+  }
 }
 
 @-webkit-keyframes dj {
