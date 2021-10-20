@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*,
+*::before,
+*::after{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 16px;
+    font-family: 'Jost', sans-serif;
+}
+
+
+img{
+    max-width: 100%;
+}
+* {
+	box-sizing: border-box;
+}
+body{
+
+    overflow: hidden;
+}
+// main code start
+header{
+    background-color: black;
+    nav{
+        ul{
+            list-style-type: none;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            margin: 0px;
+            align-items: center;
+            padding: 0px;
+            li{
+                color:#fff;
+                padding-right: 5px;
+                text-transform: uppercase;
+                img{
+                }
+                &:nth-child(1){
+                    width: 5%;
+                    margin-right: auto;
+                }
+            }
+        }
+    }
+    
+}
+
+main{
+    height: 100vh;
+    background-image: linear-gradient(to bottom, rgba(157, 14, 14, 0), #4f0707),url(https://cdn.pixabay.com/photo/2015/05/15/14/50/concert-768722_960_720.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    animation-name:dj;
+    animation-duration:3s;
+    animation-timing-function: cubic-bezier(.75,.75,.28,.3);
+    animation-iteration-count: infinite;
+
+    .track{
+        background-color: rgba(33,33,42,.3);
+        color:#1ed760;
+        h1{
+
+        }
+        .songList{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            .list{
+                background-color: #78458f;
+                padding: 10px;
+                margin: 1px 0px;
+                border-radius: 26px;
+                span{
+
+                }
+            }
+        }
+    }
+}
+
+footer{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content:center;
+    align-content: center;
+    text-align: center;
+    background-color: rgba(33,33,42,.6);
+    i{
+        color: blanchedalmond;
+        font-size: 50px;
+    }
+
+    input{
+        width: 100%;
+    }
+}
+
+
+
+// animation start
+
+@keyframes dj {
+    0% {
+        background-image: linear-gradient(to bottom, rgba(157, 14, 14, 0), #581845),url(https://cdn.pixabay.com/photo/2015/05/15/14/50/concert-768722_960_720.jpg);
+    }
+    25% {
+        background-image: linear-gradient(to bottom, rgba(157, 14, 14, 0), #900C3F),url(https://cdn.pixabay.com/photo/2015/05/15/14/50/concert-768722_960_720.jpg);
+    }
+    50% {
+        background-image: linear-gradient(to bottom, rgba(157, 14, 14, 0), #C70039),url(https://cdn.pixabay.com/photo/2015/05/15/14/50/concert-768722_960_720.jpg);
+    }
+    75% {
+        background-image: linear-gradient(to bottom, rgba(157, 14, 14, 0), #FF5733),url(https://cdn.pixabay.com/photo/2015/05/15/14/50/concert-768722_960_720.jpg);
+    }
+    100% {
+        background-image: linear-gradient(to bottom, rgba(157, 14, 14, 0), #FFC300),url(https://cdn.pixabay.com/photo/2015/05/15/14/50/concert-768722_960_720.jpg);
+    }
+  }
